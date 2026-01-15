@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>Portfolio</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .carosel {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+      }
+
+      .carosel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .group {
+        display: flex;
+        gap: 1em;
+        padding-right: 1em;
+        flex: 0 0 auto;
+      }
+
+      .card {
+        flex: 0 0 5em;
+        padding: 1em;
+        height: 80px;
+      }
+
+      .track {
+        display: flex;
+        width: max-content;
+        --scroll-distance: 50%;
+        --scroll-duration: 20s;
+        --scroll-nudge: 0px;
+        animation: scroll var(--scroll-duration) linear infinite;
+        will-change: transform;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+      }
+
+      @keyframes scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(
+            calc(-1 * var(--scroll-distance) - var(--scroll-nudge))
+          );
+        }
+      }
+
+      .view {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity 500ms ease;
+        transition-delay: 0.5s;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+      }
+
+      .view.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="font-lora">
+    <header class="bg-stone-800 h-10 w-full">
+      <h4
+        class="text-md text-white inline-block font-cursive mt-2 ml-2 sm:text-xl"
+      >
+        RAM SARAN
+      </h4>
+
+      <span
+        id="nav"
+        class="sm:hidden text-white hover:scale-105 transition-all duration-700 cursor-pointer z-20 float-end mr-3 mt-2"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </span>
+
+      <div
+        id="dropdown"
+        class="absolute top-10 left-0 w-full bg-stone-800/90 flex flex-col items-center py-4 opacity-0 invisible -translate-y-2 transition-all duration-700 ease-in z-10 sm:opacity-100 sm:visible sm:flex sm:flex-row sm:h-10 sm:justify-end sm:bg-transparent sm:top-2"
+      >
+        <a
+          href="#aboutMe"
+          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
+          >About Me</a
+        >
+        <a
+          href="#techStack"
+          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
+          >Tech Stack</a
+        >
+        <a
+          href="#projects"
+          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
+          >Projects</a
+        >
+        <a
+          href="#contact"
+          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <div
+        class="h-180 w-full bg-stone-800 border border-t-white flex flex-col items-center border-b-stone-800 sm:h-90 lg:h-120"
+      >
+        <pre class="align-middle text-white mt-5 text-xl">
+  Divya Ram Saran 
+Full-Stack Developer</pre
+        >
+        <div
+          class="flex flex-col w-full items-center sm:flex-row sm:items-center sm:justify-evenly sm:mt-5 lg:mt-10"
+        >
+          <div class="p-5 sm:w-60 lg:w-80">
+            <p
+              class="text-3xl text-white text-center p-2 sm:text-lg lg:text-xl"
+            >
+              <span class="text-4xl">&quot;</span>Crafting seamless user
+              experiences from frontend flair to backend power
+            </p>
+          </div>
+
+          <picture
+            class="h-60 w-40 rounded-t-full rounded-b-lg bg-white inline-block border border-stone-800 lg:w-60 lg:h-83"
+          >
+            <img
+              src="./media/image.png"
+              alt=""
+              class="mt-2 w-fit h-fit lg:w-60 lg:h-80"
+            />
+          </picture>
+
+          <div class="p-5 sm:w-60 lg:w-85">
+            <p
+              class="text-3xl text-white text-center p-1 sm:text-lg lg:text-xl"
+            >
+              <span class="text-4xl">&quot;</span>Any sufficiently advanced
+              technology is indistinguishable from magic.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="-mt-1">
+        <svg
+          class="hero bg-stone-800 w-full h-16"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <path
+              id="wave-path"
+              d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"
+            ></path>
+          </defs>
+          <g>
+            <use
+              xlink:href="#wave-path"
+              x="50"
+              y="3"
+              fill="rgba(209,213,219,0.1)"
+            ></use>
+          </g>
+          <g>
+            <use
+              xlink:href="#wave-path"
+              x="50"
+              y="8"
+              fill="rgba(255,255,255,1)"
+            ></use>
+          </g>
+        </svg>
+      </div>
+
+      <div id="aboutMe">
+        <h2
+          class="text-3xl text-stone m-2 flex items-center before:h-px before:bg-stone-800 before:flex-1 after:h-px after:bg-stone-800 after:flex-1 mt-5"
+        >
+          NICE TO MEET YOU
+        </h2>
+      </div>
+
+      <div class="text-center p-2 sm:p-5 overflow-x-hidden">
+        <h2>
+          I’m Bagu Divya Ram Saran, an aspiring Full-Stack Developer focused on
+          building clean, reliable applications and continuously improving my
+          problem‑solving skills. With internship experience on real projects
+          and a strong academic background in computer applications, I’m eager
+          to learn from experienced teams and contribute to impactful products.
+        </h2>
+      </div>
+    </main>
+
+    <div id="techStack">
+      <h2
+        class="text-3xl text-stone m-2 flex items-center before:h-px before:bg-stone-800 before:flex-1 after:h-px after:bg-stone-800 after:flex-1 mt-5"
+      >
+        TECH STACK
+      </h2>
+    </div>
+
+    <div class="carosel">
+      <div class="track">
+        <div class="group">
+          <div class="card"><img src="./media/html-5.png" alt="" /></div>
+          <div class="card"><img src="./media/css-3.png" alt="" /></div>
+          <div class="card"><img src="./media/js.png" alt="" /></div>
+          <div class="card" style="margin-top: 10px">
+            <img src="./media/Tailwind CSS Icon.png" alt="" />
+          </div>
+          <div class="card" style="margin-top: 10px">
+            <img src="./media/postgress.jpg" alt="" />
+          </div>
+          <div class="card"><img src="./media/Deno JS.png" alt="" /></div>
+          <div class="card"><img src="./media/java.png" alt="" /></div>
+          <div class="card"><img src="./media/programing.png" alt="" /></div>
+          <div class="card"><img src="./media/python.png" alt="" /></div>
+          <div class="card"><img src="./media/react.png" alt="" /></div>
+        </div>
+
+        <div aria-hidden class="group">
+          <div class="card"><img src="./media/html-5.png" alt="" /></div>
+          <div class="card"><img src="./media/css-3.png" alt="" /></div>
+          <div class="card"><img src="./media/js.png" alt="" /></div>
+          <div class="card" style="margin-top: 10px">
+            <img src="./media/Tailwind CSS Icon.png" alt="" />
+          </div>
+          <div class="card" style="margin-top: 10px">
+            <img src="./media/postgress.jpg" alt="" />
+          </div>
+          <div class="card"><img src="./media/Deno JS.png" alt="" /></div>
+          <div class="card"><img src="./media/java.png" alt="" /></div>
+          <div class="card"><img src="./media/programing.png" alt="" /></div>
+          <div class="card"><img src="./media/python.png" alt="" /></div>
+          <div class="card"><img src="./media/react.png" alt="" /></div>
+        </div>
+
+        <div aria-hidden class="group">
+          <div class="card"><img src="./media/media/html-5.png" alt="" /></div>
+          <div class="card"><img src="./media/media/css-3.png" alt="" /></div>
+          <div class="card"><img src="./media/media/js.png" alt="" /></div>
+          <div class="card" style="margin-top: 10px">
+            <img src="./media/media/Tailwind CSS Icon.png" alt="" />
+          </div>
+          <div class="card" style="margin-top: 10px">
+            <img src="./media/media/postgress.jpg" alt="" />
+          </div>
+          <div class="card"><img src="./media/media/Deno JS.png" alt="" /></div>
+          <div class="card"><img src="./media/media/java.png" alt="" /></div>
+          <div class="card">
+            <img src="./media/media/programing.png" alt="" />
+          </div>
+          <div class="card"><img src="./media/media/python.png" alt="" /></div>
+          <div class="card"><img src="./media/media/react.png" alt="" /></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="projects">
+      <h2
+        class="text-3xl text-stone m-2 flex items-center before:h-px before:bg-stone-800 before:flex-1 after:h-px after:bg-stone-800 after:flex-1"
+      >
+        Featured Works
+      </h2>
+    </div>
+
+    <div class="sm:grid sm:grid-cols-2">
+      <div
+        style="background-image: url(./media/bookCricket.png)"
+        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
+      >
+        <div
+          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
+        >
+          <h1 class="text-3xsl p-3 mt-2 sm:text-2xl sm:mt-0">Book Cricket</h1>
+          <h3 class="view p-3 mb-2">
+            Book Cricket is a fun, console-based JavaScript game where two
+            players take turns batting in a simulated cricket match. A coin toss
+            decides who bats first, with randomized outcomes for runs, wides,
+            and dismissals. It tracks scores live and supports replays for
+            endless play.
+          </h3>
+        </div>
+      </div>
+
+      <div
+        style="background-image: url(./media/registerWeb.png)"
+        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
+      >
+        <div
+          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
+        >
+          <h1 class="text-3xl p-3 mt-2 sm:text-2xl sm:mt-0">
+            Event Registration Portal
+          </h1>
+
+          <h3 class="p-3 mb-2 view">
+            Event Registration Portal is a web platform for admins to manage
+            quizzes, competitions, and cultural events. It collects participant
+            data through forms, tracks registrations in real-time, and stores
+            details for better event planning.
+          </h3>
+        </div>
+      </div>
+
+      <div
+        style="background-image: url(./media/taskReminder.png)"
+        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
+      >
+        <div
+          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
+        >
+          <h1 class="text-3xl p-3 mt-2 sm:text-2xl sm:mt-0">
+            Task Reminder Application
+          </h1>
+
+          <h3 class="p-3 mb-2 view">
+            Task Reminder Application is a JavaScript console app for managing
+            normal (one-time) and recurring tasks with real-time status
+            tracking, countdown timers, and interactive menu controls. Users can
+            create, view, cancel, or complete tasks.
+          </h3>
+        </div>
+      </div>
+
+      <div
+        style="background-image: url(./media/bingo.jpg)"
+        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
+      >
+        <div
+          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
+        >
+          <h1 class="text-3xl p-3 mt-2 sm:text-2xl sm:mt-0">BINGO</h1>
+
+          <h3 class="p-3 mb-2 view">
+            Bingo Game is a two-player JavaScript console game featuring 5x5
+            randomly generated grids displayed side-by-side. Players mark called
+            numbers with 🌟 stars in real-time, racing to complete all 25
+            numbers first to win.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <footer id="contact" class="bg-stone-800 w-full h-170 mt-5 sm:h-90">
+      <h1 class="text-2xl text-white p-5 text-center">
+        Got a project idea or job opening?
+      </h1>
+
+      <div class="sm:flex sm:mt-5">
+        <section class="bg-white m-5 rounded-lg p-5 flex-1">
+          <img src="./media/email.png" alt="" class="size-10" />
+          <h2 class="text-stone-800 mt-1">Email Address</h2>
+          <h2 class="text-stone-800 text-sm mt-1">
+            Just Drop A Mail I Will Get Back Soon
+          </h2>
+          <a
+            href="mailto:bagudivyaramsaran@gmail.com"
+            target="_blank"
+            class="text-blue-400 text-sm inline-block mt-1"
+            >bagudivyaramsaran@gmail.com</a
+          >
+        </section>
+
+        <section class="bg-white m-5 rounded-lg p-5 flex-1">
+          <img src="./media/linkedin.png" alt="" class="size-10" />
+          <h2 class="text-stone-800 mt-1">Linked In</h2>
+          <h2 class="text-stone-800 text-sm mt-1">Connect with me</h2>
+          <a
+            href="https://www.linkedin.com/in/bagu-ram-saran-24393a260"
+            target="_blank"
+            class="text-blue-400 text-sm inline-block mt-1"
+            >Linked In Profile</a
+          >
+        </section>
+
+        <section class="bg-white m-5 rounded-lg p-5 flex-1">
+          <img src="./media/github.png" alt="" class="size-10" />
+          <h2 class="text-stone-800 mt-1">Git Hub</h2>
+          <h2 class="text-stone-800 text-sm mt-1">View My Work On Git Hub</h2>
+          <a
+            href="https://github.com/divyaramsaran"
+            target="_blank"
+            class="text-blue-400 text-sm inline-block mt-1"
+            >Git Hub Profile</a
+          >
+        </section>
+      </div>
+    </footer>
+
+    <script>
+      const navBar = document.querySelector("#nav");
+      const dropDown = document.querySelector("#dropdown");
+      navBar.addEventListener("click", () => {
+        dropDown.classList.toggle("opacity-100");
+        dropDown.classList.toggle("visible");
+        dropDown.classList.toggle("translate-y-0");
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const track = document.querySelector(".track");
+        const group = document.querySelector(".group");
+
+        if (track && group) {
+          const setScroll = () => {
+            const groupWidth = group.getBoundingClientRect().width;
+            track.style.setProperty("--scroll-distance", `${groupWidth}px`);
+            track.style.setProperty("--scroll-nudge", `0.5px`);
+            const speed = 20;
+            const duration = Math.max(6, groupWidth / speed);
+            track.style.setProperty("--scroll-duration", `${duration}s`);
+          };
+          setScroll();
+          window.addEventListener("resize", setScroll);
+        }
+
+        const views = document.querySelectorAll(".view");
+        if (views.length > 0) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                const el = entry.target;
+                const delay = parseFloat(el.dataset.delay) || 0.6;
+
+                if (entry.isIntersecting) {
+                  el.style.transitionDelay = `${delay}s`;
+                  el.classList.add("in-view");
+
+                  if (el.dataset.once === "true") {
+                    io.unobserve(el);
+                  }
+                } else {
+                  el.classList.remove("in-view");
+                  el.style.transitionDelay = "";
+                }
+              });
+            },
+            { threshold: 0.2, rootMargin: "0px 0px -10%" }
+          );
+
+          views.forEach((v) => io.observe(v));
+        }
+      });
+    </script>
+  </body>
+</html>
