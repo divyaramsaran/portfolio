@@ -1,11 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Optimization -->
+    <title>Divya Ram Saran | Full-Stack Developer & AI/ML Enthusiast</title>
+    <meta name="description" content="Portfolio of Bagu Divya Ram Saran - Full-Stack Developer specializing in MERN stack, PostgreSQL, and AI/ML. Experienced Intern from ThoughtWorks and Tatvam AI Labs." />
+    <meta name="keywords" content="Divya Ram Saran, Ram Saran, Full-Stack Developer, MERN Stack, AI & ML, ThoughtWorks Intern, Tatvam AI, Web Developer Portfolio, JavaScript, Python, PostgreSQL" />
+    <meta name="author" content="Bagu Divya Ram Saran" />
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
-    <title>Portfolio</title>
-
+    
+    <!-- FontAwesome & Google Fonts -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -13,34 +21,47 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Pacifico&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
+      /* Horizontal marquee scroll track animations */
       .carosel {
-        margin-top: 5px;
+        margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         overflow: hidden;
-      }
-
-      .carosel::-webkit-scrollbar {
-        display: none;
+        width: 100%;
+        position: relative;
       }
 
       .group {
         display: flex;
-        gap: 1em;
-        padding-right: 1em;
+        gap: 1.5rem;
+        padding-right: 1.5rem;
         flex: 0 0 auto;
       }
 
-      .card {
-        flex: 0 0 5em;
-        padding: 1em;
-        height: 80px;
+      .tech-card {
+        flex: 0 0 4.5rem;
+        height: 4.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.6rem;
+        padding: 0.75rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      @media (min-width: 768px) {
+        .tech-card {
+          flex: 0 0 6rem;
+          height: 6rem;
+          border-radius: 0.75rem;
+          padding: 1rem;
+        }
       }
 
       .track {
@@ -51,8 +72,6 @@
         --scroll-nudge: 0px;
         animation: scroll var(--scroll-duration) linear infinite;
         will-change: transform;
-        backface-visibility: hidden;
-        transform: translateZ(0);
       }
 
       @keyframes scroll {
@@ -66,409 +85,649 @@
         }
       }
 
-      .view {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1),
-          opacity 500ms ease;
-        transition-delay: 0.5s;
-        will-change: transform, opacity;
-        backface-visibility: hidden;
-        transform: translateZ(0);
+      /* Hover marquee stop */
+      .carosel:hover .track {
+        animation-play-state: paused;
       }
 
-      .view.in-view {
-        opacity: 1;
-        transform: translateY(0);
+      /* Glowing custom shadows for elements */
+      .shadow-glow {
+        box-shadow: 0 10px 40px -15px rgba(99, 102, 241, 0.04);
+      }
+      .shadow-glow:hover {
+        box-shadow: 0 20px 50px -10px rgba(99, 102, 241, 0.12);
       }
     </style>
   </head>
-  <body class="font-lora">
-    <header class="bg-stone-800 h-10 w-full">
-      <h4
-        class="text-md text-white inline-block font-cursive mt-2 ml-2 sm:text-xl"
-      >
-        RAM SARAN
-      </h4>
+  <body class="font-poppin bg-transparent text-slate-800 overflow-hidden selection:bg-purple-200 selection:text-purple-900">
+    
+    <!-- 1. Splash Screen Loader -->
+    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#eef2ff] via-[#fdf4ff] to-[#e0f2fe] transition-all duration-800">
+      <!-- Cyber Ambient Glow Backdrops (Light Theme compatible) -->
+      <div class="absolute w-[25rem] h-[25rem] md:w-[35rem] md:h-[35rem] rounded-full bg-purple-400/15 blur-[90px] -top-12 -left-12 animate-pulse" style="animation-duration: 4s;"></div>
+      <div class="absolute w-[25rem] h-[25rem] md:w-[35rem] md:h-[35rem] rounded-full bg-indigo-400/15 blur-[90px] -bottom-12 -right-12 animate-pulse" style="animation-duration: 6s;"></div>
+      <div class="absolute w-[20rem] h-[20rem] rounded-full bg-pink-400/10 blur-[80px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" style="animation-duration: 5s;"></div>
+      
+      <div class="relative flex flex-col items-center select-none scale-90 sm:scale-100">
+        <!-- Holographic Concentric Rings and Progress Circular Frame -->
+        <div class="relative w-44 h-44 md:w-48 md:h-48 mb-8 flex items-center justify-center">
+          <!-- Outer Cyber Ring (Slow counter-clockwise) -->
+          <div class="absolute inset-0 rounded-full border border-dashed border-indigo-300/40 animate-spin" style="animation-duration: 15s; transform: rotate(-180deg);"></div>
+          
+          <!-- Mid Glow Ring (Fast clockwise) -->
+          <div class="absolute inset-2 rounded-full border border-gradient-to-r from-purple-500/20 via-transparent to-pink-500/20 blur-[0.5px] animate-spin" style="animation-duration: 8s;"></div>
+          
+          <!-- SVG Circular Progress Bar -->
+          <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <circle class="text-indigo-100/40" stroke-width="1.5" stroke="currentColor" fill="transparent" r="44" cx="50" cy="50"/>
+            <circle id="splash-circle-progress" class="text-transparent transition-all duration-100 ease-out" stroke-width="3.5" stroke-linecap="round" stroke="url(#loader-gradient)" fill="transparent" r="44" cx="50" cy="50" stroke-dasharray="276.4" stroke-dashoffset="276.4"/>
+            <defs>
+              <linearGradient id="loader-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#9333ea" />
+                <stop offset="50%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#ec4899" />
+              </linearGradient>
+            </defs>
+          </svg>
+          
+          <!-- Central Glowing Glass Monogram -->
+          <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-white/75 border border-white/50 shadow-lg flex flex-col items-center justify-center relative overflow-hidden backdrop-blur-md">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5"></div>
+            <span class="text-2xl md:text-3xl font-cursive tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 font-bold drop-shadow-[0_2px_4px_rgba(99,102,241,0.15)] animate-pulse">DRS</span>
+          </div>
+        </div>
+        
+        <!-- Percentage and Monospace Loading Details -->
+        <div class="flex flex-col items-center space-y-3">
+          <div class="flex items-baseline space-x-1">
+            <span id="splash-percentage" class="text-4xl sm:text-5xl font-extrabold font-mono text-slate-800 tracking-tighter bg-clip-text bg-gradient-to-b from-slate-900 to-slate-600">0</span>
+            <span class="text-purple-600 font-mono text-sm font-semibold">%</span>
+          </div>
+          
+          <!-- Mock System Logs Console Output -->
+          <div class="h-6 flex items-center justify-center px-4">
+            <span id="splash-log" class="text-[10px] sm:text-xs font-mono text-indigo-600/70 tracking-wider text-center uppercase font-semibold">INITIALIZING SYSTEM CORE...</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <span
-        id="nav"
-        class="sm:hidden text-white hover:scale-105 transition-all duration-700 cursor-pointer z-20 float-end mr-3 mt-2"
-      >
-        <i class="fa-solid fa-bars"></i>
-      </span>
+    <!-- 2. Three.js Canvas Backdrop -->
+    <canvas id="three-canvas" class="fixed inset-0 w-full h-full -z-10 pointer-events-none"></canvas>
 
-      <div
-        id="dropdown"
-        class="absolute top-10 left-0 w-full bg-stone-800/90 flex flex-col items-center py-4 opacity-0 invisible -translate-y-2 transition-all duration-700 ease-in z-10 sm:opacity-100 sm:visible sm:flex sm:flex-row sm:h-10 sm:justify-end sm:bg-transparent sm:top-2"
-      >
-        <a
-          href="#aboutMe"
-          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
-          >About Me</a
+    <!-- 3. Navigation Header -->
+    <header class="fixed top-0 left-0 w-full py-4 z-40 flex items-center px-4 md:px-8 transition-all duration-500">
+      <div id="nav-container" class="max-w-6xl w-full mx-auto h-14 md:h-16 px-6 md:px-8 rounded-full border border-white/40 bg-white/75 backdrop-blur-lg shadow-sm flex items-center justify-between transition-all duration-500">
+        <h4 class="text-lg font-cursive text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 tracking-wider whitespace-nowrap">
+          Ram Saran
+        </h4>
+
+        <!-- Mobile hamburger -->
+        <span
+          id="nav"
+          class="lg:hidden text-slate-800 text-lg hover:scale-105 transition-all duration-300 cursor-pointer z-50 p-2"
+          role="button"
+          aria-label="Toggle navigation menu"
         >
-        <a
-          href="#techStack"
-          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
-          >Tech Stack</a
+          <i class="fa-solid fa-bars"></i>
+        </span>
+
+        <!-- Navigation Links -->
+        <nav
+          id="dropdown"
+          class="absolute top-16 left-4 right-4 bg-white/95 flex flex-col items-center py-6 rounded-2xl opacity-0 invisible -translate-y-2 transition-all duration-500 ease-out z-40 border border-slate-200/50 lg:border-0 lg:opacity-100 lg:visible lg:flex lg:flex-row lg:items-center lg:h-auto lg:w-auto lg:justify-end lg:bg-transparent lg:top-0 lg:py-0 lg:translate-y-0 lg:relative lg:gap-1.5 xl:gap-3 lg:p-0"
         >
-        <a
-          href="#projects"
-          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
-          >Projects</a
-        >
-        <a
-          href="#contact"
-          class="text-sm text-white m-2 inline-block hover:bg-white hover:text-black hover:rounded-sm hover:transform all hover:duration-700 hover:-translate-y-1 sm:text-lg"
-          >Contact</a
-        >
+          <a
+            href="#aboutMe"
+            class="nav-link text-xs lg:text-sm font-medium text-slate-700 px-3 py-1.5 rounded-full hover:bg-purple-600/5 hover:text-purple-600 transition-all duration-300 lg:m-0"
+            >About Me</a
+          >
+          <a
+            href="#experience"
+            class="nav-link text-xs lg:text-sm font-medium text-slate-700 px-3 py-1.5 rounded-full hover:bg-purple-600/5 hover:text-purple-600 transition-all duration-300 lg:m-0"
+            >Experience</a
+          >
+          <a
+            href="#techStack"
+            class="nav-link text-xs lg:text-sm font-medium text-slate-700 px-3 py-1.5 rounded-full hover:bg-purple-600/5 hover:text-purple-600 transition-all duration-300 lg:m-0"
+            >Tech Stack</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-xs lg:text-sm font-medium text-slate-700 px-3 py-1.5 rounded-full hover:bg-purple-600/5 hover:text-purple-600 transition-all duration-300 lg:m-0"
+            >Projects</a
+          >
+          <a
+            href="#education"
+            class="nav-link text-xs lg:text-sm font-medium text-slate-700 px-3 py-1.5 rounded-full hover:bg-purple-600/5 hover:text-purple-600 transition-all duration-300 lg:m-0"
+            >Education</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-xs lg:text-sm font-medium text-slate-700 px-3 py-1.5 rounded-full hover:bg-purple-600/5 hover:text-purple-600 transition-all duration-300 lg:m-0"
+            >Contact</a
+          >
+        </nav>
       </div>
     </header>
 
-    <main>
-      <div
-        class="h-180 w-full bg-stone-800 border border-t-white flex flex-col items-center border-b-stone-800 sm:h-90 lg:h-120"
-      >
-        <pre class="align-middle text-white mt-5 text-xl">
-  Divya Ram Saran 
-Full-Stack Developer</pre
-        >
-        <div
-          class="flex flex-col w-full items-center sm:flex-row sm:items-center sm:justify-evenly sm:mt-5 lg:mt-10"
-        >
-          <div class="p-5 sm:w-60 lg:w-80">
-            <p
-              class="text-3xl text-white text-center p-2 sm:text-lg lg:text-xl"
-            >
-              <span class="text-4xl">&quot;</span>Crafting seamless user
-              experiences from frontend flair to backend power
-            </p>
+    <!-- 4. Main Portfolio Layout -->
+    <main class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32">
+      
+      <!-- Hero Section -->
+      <section id="hero" class="min-h-0 pt-8 pb-4 md:pt-12 md:pb-6 flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center md:flex-row md:justify-between md:items-center md:gap-12 lg:gap-16 xl:gap-24 w-full max-w-5xl mx-auto">
+          
+          <!-- Profile Picture (renders first on mobile, but md:order-2 shifts it to the right on desktop) -->
+          <div class="md:order-2 flex justify-center flex-shrink-0 mb-6 md:mb-0">
+            <div class="hero-profile tilt-card p-1.5 glass rounded-2xl w-44 h-56 md:w-56 md:h-72 lg:w-64 lg:h-80 shadow-md border border-slate-200/50 overflow-hidden cursor-grab active:cursor-grabbing">
+              <div class="w-full h-full rounded-xl overflow-hidden bg-gradient-to-b from-purple-100 to-slate-100">
+                <img
+                  src="./media/image.png"
+                  alt="Bagu Divya Ram Saran Profile"
+                  class="w-full h-full object-cover object-top scale-[1.25] filter saturate-90 hover:saturate-100 transition-all duration-500"
+                />
+              </div>
+            </div>
           </div>
 
-          <picture
-            class="h-60 w-40 rounded-t-full rounded-b-lg bg-white inline-block border border-stone-800 lg:w-60 lg:h-83"
-          >
-            <img
-              src="./media/image.png"
-              alt=""
-              class="mt-2 w-fit h-fit lg:w-60 lg:h-80"
-            />
-          </picture>
+          <!-- Text Block (renders second on mobile, but md:order-1 shifts it to the left on desktop) -->
+          <div class="md:order-1 flex flex-col items-center md:items-start space-y-2.5 text-center md:text-left w-full md:max-w-lg lg:max-w-2xl">
+            <span class="hero-badge px-3 py-1.2 glass rounded-full text-[10px] font-semibold text-purple-600 uppercase tracking-widest border border-purple-500/10">
+              ThoughtWorks & Tatvam AI Alum
+            </span>
+            
+            <h1 class="hero-title text-2xl sm:text-3xl lg:text-5xl font-bold font-monster tracking-tight text-slate-900 leading-tight overflow-hidden py-0.5">
+              <span class="block">Bagu Divya</span>
+              <span class="block bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 bg-clip-text text-transparent mt-0.5 leading-none">Ram Saran</span>
+            </h1>
 
-          <div class="p-5 sm:w-60 lg:w-85">
-            <p
-              class="text-3xl text-white text-center p-1 sm:text-lg lg:text-xl"
-            >
-              <span class="text-4xl">&quot;</span>Any sufficiently advanced
-              technology is indistinguishable from magic.
-            </p>
+            <h2 class="hero-subtitle text-xs sm:text-sm lg:text-base font-mono text-slate-700 min-h-[36px] flex items-center justify-center md:justify-start">
+              <span>I'm an&nbsp;</span>
+              <span class="typewriter-text text-purple-600 border-r-2 border-purple-600 pr-1 animate-pulse"></span>
+            </h2>
+
+            <div class="flex flex-col space-y-1.5 w-full sm:w-auto text-left items-center md:items-start">
+              <p class="hero-quote text-slate-600 text-[11px] sm:text-xs lg:text-sm italic border-l-2 border-purple-500/50 pl-3">
+                "Crafting seamless user experiences from frontend flair to backend power."
+              </p>
+              <p class="hero-quote text-slate-600 text-[11px] sm:text-xs lg:text-sm italic border-l-2 border-indigo-500/50 pl-3">
+                "Aspiring Full-Stack Developer focused on building clean, production-grade applications."
+              </p>
+            </div>
+
+            <div class="pt-0 w-full sm:w-auto flex flex-col sm:flex-row gap-2 items-center justify-center md:justify-start">
+              <div class="magnetic-wrap w-full sm:w-auto flex justify-center p-3">
+                <a
+                  href="#contact"
+                  class="magnetic-btn px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-xs lg:text-sm shadow-md shadow-purple-500/10 inline-block text-center cursor-pointer transition-[background-color,color,box-shadow] duration-300 w-full sm:w-auto"
+                >
+                  <span class="btn-inner block">Let's Connect</span>
+                </a>
+              </div>
+              <div class="magnetic-wrap w-full sm:w-auto flex justify-center p-3">
+                <a
+                  href="#projects"
+                  class="magnetic-btn px-8 py-3.5 rounded-full glass hover:bg-white/80 text-slate-700 font-semibold text-xs lg:text-sm inline-block text-center cursor-pointer transition-[background-color,color,box-shadow] duration-300 w-full sm:w-auto"
+                >
+                  <span class="btn-inner block">View Works</span>
+                </a>
+              </div>
+            </div>
           </div>
+
         </div>
-      </div>
 
-      <div class="-mt-1">
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator mt-6 md:mt-8 flex flex-col items-center space-y-1 px-5 py-2 glass rounded-full shadow-sm border border-purple-500/20 hover:border-purple-500/40 hover:bg-white/95 cursor-pointer z-10 transition-all duration-300" onclick="document.getElementById('aboutMe').scrollIntoView();">
+          <span class="text-[9px] sm:text-[10px] font-mono font-semibold tracking-widest text-purple-700 uppercase">Scroll Down</span>
+          <i class="fa-solid fa-angle-down text-purple-600 text-[10px] sm:text-xs"></i>
+        </div>
+      </section>
+
+      <!-- SVG Divider Wave -->
+      <div class="w-full h-12 overflow-hidden -mt-6 opacity-30 pointer-events-none">
         <svg
-          class="hero bg-stone-800 w-full h-16"
+          class="w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
           viewBox="0 24 150 28"
           preserveAspectRatio="none"
         >
-          <defs>
-            <path
-              id="wave-path"
-              d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"
-            ></path>
-          </defs>
-          <g>
-            <use
-              xlink:href="#wave-path"
-              x="50"
-              y="3"
-              fill="rgba(209,213,219,0.1)"
-            ></use>
-          </g>
-          <g>
-            <use
-              xlink:href="#wave-path"
-              x="50"
-              y="8"
-              fill="rgba(255,255,255,1)"
-            ></use>
-          </g>
+          <path
+            d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"
+            fill="rgba(147, 51, 234, 0.08)"
+          ></path>
         </svg>
       </div>
 
-      <div id="aboutMe">
-        <h2
-          class="text-3xl text-stone m-2 flex items-center before:h-px before:bg-stone-800 before:flex-1 after:h-px after:bg-stone-800 after:flex-1 mt-5"
-        >
+      <!-- About Me Section -->
+      <section id="aboutMe" class="pt-6 pb-16 md:pt-8 md:pb-20 flex flex-col items-center">
+        <h2 class="section-header text-xl md:text-2xl lg:text-3xl font-bold font-monster text-center mb-10 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center w-full before:h-px before:bg-slate-200 before:flex-1 after:h-px after:bg-slate-200 after:flex-1 before:mr-4 after:ml-4">
           NICE TO MEET YOU
         </h2>
-      </div>
+        
+        <div id="aboutMeContent" class="tilt-card glass bg-gradient-to-br from-white/90 to-purple-50/30 p-8 md:p-10 lg:p-12 rounded-2xl max-w-4xl shadow-sm border border-slate-200/50 cursor-default relative overflow-hidden">
+          <div class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/5 rounded-full filter blur-2xl"></div>
+          <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/5 rounded-full filter blur-2xl"></div>
+          
+          <h3 class="parallax-depth text-sm md:text-base lg:text-lg text-slate-700 text-center leading-relaxed font-light" data-depth="10">
+            I’m <strong class="text-purple-600 font-semibold">Bagu Divya Ram Saran</strong>, a results-driven Full-Stack Developer and B.Tech CSE (AI & ML) student with hands-on experience building production-grade software across the MERN stack. Completed an 8-month internship at <strong class="text-indigo-600 font-semibold">ThoughtWorks Technologies</strong>, gaining industry-level expertise in clean code and testing, followed by a MERN Stack internship at <strong class="text-indigo-600 font-semibold">Tatvam AI Labs</strong>. Eager to design solutions that solve real-world complexities.
+          </h3>
+        </div>
+      </section>
 
-      <div class="text-center p-2 sm:p-5 overflow-x-hidden">
-        <h2>
-          I’m Bagu Divya Ram Saran, an aspiring Full-Stack Developer focused on
-          building clean, reliable applications and continuously improving my
-          problem‑solving skills. With internship experience on real projects
-          and a strong academic background in computer applications, I’m eager
-          to learn from experienced teams and contribute to impactful products.
+      <!-- Professional Experience Section -->
+      <section id="experience" class="py-14">
+        <h2 class="section-header text-lg md:text-xl lg:text-2xl font-bold font-monster text-center mb-12 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center w-full before:h-px before:bg-slate-200 before:flex-1 after:h-px after:bg-slate-200 after:flex-1 before:mr-4 after:ml-4">
+          WORK EXPERIENCE
         </h2>
-      </div>
-    </main>
 
-    <div id="techStack">
-      <h2
-        class="text-3xl text-stone m-2 flex items-center before:h-px before:bg-stone-800 before:flex-1 after:h-px after:bg-stone-800 after:flex-1 mt-5"
-      >
-        TECH STACK
-      </h2>
-    </div>
+        <!-- Vertical Timeline -->
+        <div id="experience-timeline" class="timeline-container max-w-3xl mx-auto space-y-8">
+          
+          <!-- Experience item 1 -->
+          <div class="timeline-item relative pl-2">
+            <div class="timeline-dot"></div>
+            <div class="glass bg-gradient-to-br from-white/90 to-indigo-50/30 p-5 rounded-xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                <div>
+                  <h3 class="text-sm md:text-base lg:text-lg font-bold text-slate-800">Software Developer Intern</h3>
+                  <h4 class="text-purple-600 font-medium text-[11px] md:text-xs lg:text-sm">ThoughtWorks Technologies Private Limited</h4>
+                </div>
+                <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2.5 py-0.8 rounded-full border border-purple-100 mt-1.5 sm:mt-0 inline-block w-fit">
+                  07/2024 – 03/2025
+                </span>
+              </div>
+              <ul class="list-disc list-inside text-slate-600 text-xs lg:text-[13px] space-y-1.5 mt-2">
+                <li>Developed and delivered full-stack web applications using JavaScript and Deno, adhering to clean code and modular design.</li>
+                <li>Practiced Test-Driven Development (TDD) and wrote structured test cases to ensure robust reliability.</li>
+                <li>Collaborated with experienced engineers to understand real-world software architecture, code reviews, and Agile workflows.</li>
+              </ul>
+            </div>
+          </div>
 
-    <div class="carosel">
-      <div class="track">
-        <div class="group">
-          <div class="card"><img src="./media/html-5.png" alt="" /></div>
-          <div class="card"><img src="./media/css-3.png" alt="" /></div>
-          <div class="card"><img src="./media/js.png" alt="" /></div>
-          <div class="card" style="margin-top: 10px">
-            <img src="./media/Tailwind CSS Icon.png" alt="" />
+          <!-- Experience item 2 -->
+          <div class="timeline-item relative pl-2">
+            <div class="timeline-dot"></div>
+            <div class="glass bg-gradient-to-br from-white/90 to-indigo-50/30 p-5 rounded-xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                <div>
+                  <h3 class="text-sm md:text-base lg:text-lg font-bold text-slate-800">MERN Stack Developer Intern</h3>
+                  <h4 class="text-purple-600 font-medium text-[11px] md:text-xs lg:text-sm">Tatvam AI Labs</h4>
+                </div>
+                <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2.5 py-0.8 rounded-full border border-purple-100 mt-1.5 sm:mt-0 inline-block w-fit">
+                  05/2025 – 06/2025
+                </span>
+              </div>
+              <ul class="list-disc list-inside text-slate-600 text-xs lg:text-[13px] space-y-1.5 mt-2">
+                <li>Built and maintained client management platform modules using MongoDB, Express.js, React, and Node.js.</li>
+                <li>Managed relational data schemas and wrote optimized queries using PostgreSQL and pgAdmin.</li>
+                <li>Implemented web security best practices, including JWT authentication and role-based access control (RBAC).</li>
+              </ul>
+            </div>
           </div>
-          <div class="card" style="margin-top: 10px">
-            <img src="./media/postgress.jpg" alt="" />
+
+          <!-- Experience item 3 -->
+          <div class="timeline-item relative pl-2">
+            <div class="timeline-dot"></div>
+            <div class="glass bg-gradient-to-br from-white/90 to-indigo-50/30 p-5 rounded-xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                <div>
+                  <h3 class="text-sm md:text-base lg:text-lg font-bold text-slate-800">Frontend Developer Intern</h3>
+                  <h4 class="text-purple-600 font-medium text-[11px] md:text-xs lg:text-sm">Zonup</h4>
+                </div>
+                <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2.5 py-0.8 rounded-full border border-purple-100 mt-1.5 sm:mt-0 inline-block w-fit">
+                  05/2023 – 01/2024
+                </span>
+              </div>
+              <ul class="list-disc list-inside text-slate-600 text-xs lg:text-[13px] space-y-1.5 mt-2">
+                <li>Designed and developed a Quiz Registration Web Portal using HTML, CSS, JavaScript, Bootstrap, and MySQL.</li>
+                <li>Built responsive and accessible web layouts, applying best UX/UI standards.</li>
+                <li>Improved logic-building and code readability through algorithm design and C programming.</li>
+              </ul>
+            </div>
           </div>
-          <div class="card"><img src="./media/Deno JS.png" alt="" /></div>
-          <div class="card"><img src="./media/java.png" alt="" /></div>
-          <div class="card"><img src="./media/programing.png" alt="" /></div>
-          <div class="card"><img src="./media/python.png" alt="" /></div>
-          <div class="card"><img src="./media/react.png" alt="" /></div>
+
+        </div>
+      </section>
+
+      <!-- Tech Stack Section -->
+      <section id="techStack" class="py-14 flex flex-col items-center">
+        <h2 class="section-header text-lg md:text-xl lg:text-2xl font-bold font-monster text-center mb-10 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-600 flex items-center w-full before:h-px before:bg-slate-200 before:flex-1 after:h-px after:bg-slate-200 after:flex-1 before:mr-4 after:ml-4">
+          TECH STACK
+        </h2>
+
+        <!-- Skills Scrolling Track -->
+        <div class="carosel w-full select-none">
+          <div class="track">
+            
+            <!-- Group 1 -->
+            <div class="group">
+              <div class="tech-card bg-orange-50/70 border border-orange-200/40 hover:bg-orange-100/70 hover:border-orange-300/40 glow-pink"><img src="./media/html-5.png" alt="HTML5" class="max-h-full" /></div>
+              <div class="tech-card bg-blue-50/70 border border-blue-200/40 hover:bg-blue-100/70 hover:border-blue-300/40 glow-indigo"><img src="./media/css-3.png" alt="CSS3" class="max-h-full" /></div>
+              <div class="tech-card bg-amber-50/70 border border-amber-200/40 hover:bg-amber-100/70 hover:border-amber-300/40 glow-purple"><img src="./media/js.png" alt="JavaScript" class="max-h-full" /></div>
+              <div class="tech-card bg-sky-50/70 border border-sky-200/40 hover:bg-sky-100/70 hover:border-sky-300/40 glow-indigo"><img src="./media/Tailwind CSS Icon.png" alt="Tailwind CSS" class="max-h-full" /></div>
+              <div class="tech-card bg-indigo-50/70 border border-indigo-200/40 hover:bg-indigo-100/70 hover:border-indigo-300/40 glow-purple"><img src="./media/postgress.jpg" alt="PostgreSQL" class="max-h-full rounded-md" /></div>
+              <div class="tech-card bg-stone-50/70 border border-stone-200/40 hover:bg-stone-100/70 hover:border-stone-300/40 glow-indigo"><img src="./media/Deno JS.png" alt="Deno JS" class="max-h-full" /></div>
+              <div class="tech-card bg-red-50/70 border border-red-200/40 hover:bg-red-100/70 hover:border-red-300/40 glow-pink"><img src="./media/java.png" alt="Java" class="max-h-full" /></div>
+              <div class="tech-card bg-slate-50/70 border border-slate-200/40 hover:bg-slate-100/70 hover:border-slate-300/40 glow-indigo"><img src="./media/programing.png" alt="C/Programming" class="max-h-full" /></div>
+              <div class="tech-card bg-sky-50/70 border border-sky-200/40 hover:bg-sky-100/70 hover:border-sky-300/40 glow-purple"><img src="./media/python.png" alt="Python" class="max-h-full" /></div>
+              <div class="tech-card bg-cyan-50/70 border border-cyan-200/40 hover:bg-cyan-100/70 hover:border-cyan-300/40 glow-indigo"><img src="./media/react.png" alt="React" class="max-h-full" /></div>
+            </div>
+
+            <!-- Group 2 (Duplicate for loop) -->
+            <div aria-hidden="true" class="group">
+              <div class="tech-card bg-orange-50/70 border border-orange-200/40 hover:bg-orange-100/70 hover:border-orange-300/40 glow-pink"><img src="./media/html-5.png" alt="HTML5" class="max-h-full" /></div>
+              <div class="tech-card bg-blue-50/70 border border-blue-200/40 hover:bg-blue-100/70 hover:border-blue-300/40 glow-indigo"><img src="./media/css-3.png" alt="CSS3" class="max-h-full" /></div>
+              <div class="tech-card bg-amber-50/70 border border-amber-200/40 hover:bg-amber-100/70 hover:border-amber-300/40 glow-purple"><img src="./media/js.png" alt="JavaScript" class="max-h-full" /></div>
+              <div class="tech-card bg-sky-50/70 border border-sky-200/40 hover:bg-sky-100/70 hover:border-sky-300/40 glow-indigo"><img src="./media/Tailwind CSS Icon.png" alt="Tailwind CSS" class="max-h-full" /></div>
+              <div class="tech-card bg-indigo-50/70 border border-indigo-200/40 hover:bg-indigo-100/70 hover:border-indigo-300/40 glow-purple"><img src="./media/postgress.jpg" alt="PostgreSQL" class="max-h-full rounded-md" /></div>
+              <div class="tech-card bg-stone-50/70 border border-stone-200/40 hover:bg-stone-100/70 hover:border-stone-300/40 glow-indigo"><img src="./media/Deno JS.png" alt="Deno JS" class="max-h-full" /></div>
+              <div class="tech-card bg-red-50/70 border border-red-200/40 hover:bg-red-100/70 hover:border-red-300/40 glow-pink"><img src="./media/java.png" alt="Java" class="max-h-full" /></div>
+              <div class="tech-card bg-slate-50/70 border border-slate-200/40 hover:bg-slate-100/70 hover:border-slate-300/40 glow-indigo"><img src="./media/programing.png" alt="C/Programming" class="max-h-full" /></div>
+              <div class="tech-card bg-sky-50/70 border border-sky-200/40 hover:bg-sky-100/70 hover:border-sky-300/40 glow-purple"><img src="./media/python.png" alt="Python" class="max-h-full" /></div>
+              <div class="tech-card bg-cyan-50/70 border border-cyan-200/40 hover:bg-cyan-100/70 hover:border-cyan-300/40 glow-indigo"><img src="./media/react.png" alt="React" class="max-h-full" /></div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="py-14">
+        <h2 class="section-header text-lg md:text-xl lg:text-2xl font-bold font-monster text-center mb-12 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 flex items-center w-full before:h-px before:bg-slate-200 before:flex-1 after:h-px after:bg-slate-200 after:flex-1 before:mr-4 after:ml-4">
+          FEATURED WORKS
+        </h2>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Project 1 -->
+          <div class="project-card group flex flex-col md:flex-row h-full rounded-2xl glass border border-slate-200/50 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default preserve-3d">
+            <!-- Image Frame -->
+            <div class="w-full md:w-[40%] aspect-[4/3] md:aspect-auto relative overflow-hidden bg-slate-50/5 flex-shrink-0">
+              <img 
+                src="./media/temple_crm.png" 
+                alt="Temple CRM" 
+                class="project-card-image filter saturate-90 hover:saturate-100" 
+                style="width: 100% !important; height: 100% !important; object-fit: cover !important;"
+              />
+            </div>
+            <!-- Details Frame -->
+            <div class="w-full md:w-[60%] p-5 flex flex-col justify-between flex-grow bg-gradient-to-br from-white/95 to-indigo-50/20">
+              <div>
+                <h3 class="text-base md:text-lg lg:text-xl font-bold font-monster text-slate-800 mb-2">Temple CRM</h3>
+                <p class="text-slate-600 text-xs lg:text-[13px] leading-relaxed mb-4">
+                  Developed a Client Relationship Management platform for managing devotee records and service requests. Built RESTful APIs, designed PostgreSQL database schemas via pgAdmin, and implemented secure authentication.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-1">
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-purple-50 text-purple-700 border border-purple-100">MERN Stack</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">PostgreSQL</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-pink-50 text-pink-700 border border-pink-100">REST APIs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card group flex flex-col md:flex-row h-full rounded-2xl glass border border-slate-200/50 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default preserve-3d">
+            <!-- Image Frame -->
+            <div class="w-full md:w-[40%] aspect-[4/3] md:aspect-auto relative overflow-hidden bg-slate-50/5 flex-shrink-0">
+              <img 
+                src="./media/admin_portal.png" 
+                alt="Admin Management Portal" 
+                class="project-card-image filter saturate-90 hover:saturate-100" 
+                style="width: 100% !important; height: 100% !important; object-fit: cover !important;"
+              />
+            </div>
+            <!-- Details Frame -->
+            <div class="w-full md:w-[60%] p-5 flex flex-col justify-between flex-grow bg-gradient-to-br from-white/95 to-indigo-50/20">
+              <div>
+                <h3 class="text-base md:text-lg lg:text-xl font-bold font-monster text-slate-800 mb-2">Admin Management Portal</h3>
+                <p class="text-slate-600 text-xs lg:text-[13px] leading-relaxed mb-4">
+                  Built an admin dashboard featuring Role-Based Access Control (RBAC) with differentiated permissions for admins and members. Integrated secure member registration workflows and database-driven access management.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-1">
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-purple-50 text-purple-700 border border-purple-100">MERN Stack</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">PostgreSQL</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-pink-50 text-pink-700 border border-pink-100">RBAC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card group flex flex-col md:flex-row h-full rounded-2xl glass border border-slate-200/50 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default preserve-3d">
+            <!-- Image Frame -->
+            <div class="w-full md:w-[40%] aspect-[4/3] md:aspect-auto relative overflow-hidden bg-slate-50/5 flex-shrink-0">
+              <img 
+                src="./media/bec_shield.png" 
+                alt="BEC Shield" 
+                class="project-card-image filter saturate-90 hover:saturate-100" 
+                style="width: 100% !important; height: 100% !important; object-fit: cover !important;"
+              />
+            </div>
+            <!-- Details Frame -->
+            <div class="w-full md:w-[60%] p-5 flex flex-col justify-between flex-grow bg-gradient-to-br from-white/95 to-indigo-50/20">
+              <div>
+                <h3 class="text-base md:text-lg lg:text-xl font-bold font-monster text-slate-800 mb-2">BEC Shield (BEC Detection)</h3>
+                <p class="text-slate-600 text-xs lg:text-[13px] leading-relaxed mb-4">
+                  Award-winning machine learning web application built to identify Business Email Compromise threats in real time. Features a Flask backend deployed on Render and a responsive frontend classifier interface.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-1">
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-purple-50 text-purple-700 border border-purple-100">Python/Flask</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">Machine Learning</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-pink-50 text-pink-700 border border-pink-100">Render</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card group flex flex-col md:flex-row h-full rounded-2xl glass border border-slate-200/50 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default preserve-3d">
+            <!-- Image Frame -->
+            <div class="w-full md:w-[40%] aspect-[4/3] md:aspect-auto relative overflow-hidden bg-slate-50/5 flex-shrink-0">
+              <img 
+                src="./media/event_portal.png" 
+                alt="Event Registration Portal" 
+                class="project-card-image filter saturate-90 hover:saturate-100" 
+                style="width: 100% !important; height: 100% !important; object-fit: cover !important;"
+              />
+            </div>
+            <!-- Details Frame -->
+            <div class="w-full md:w-[60%] p-5 flex flex-col justify-between flex-grow bg-gradient-to-br from-white/95 to-indigo-50/20">
+              <div>
+                <h3 class="text-base md:text-lg lg:text-xl font-bold font-monster text-slate-800 mb-2">Event Registration Portal</h3>
+                <p class="text-slate-600 text-xs lg:text-[13px] leading-relaxed mb-4">
+                  Developed a registration web platform for managing cultural and academic activities. Built event registration flows, admin event managers, and persistent MySQL database storage.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-1">
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-purple-50 text-purple-700 border border-purple-100">HTML/CSS</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">MySQL</span>
+                <span class="text-[9px] uppercase font-mono px-2.5 py-0.8 rounded bg-pink-50 text-pink-700 border border-pink-100">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education & Certifications Section -->
+      <section id="education" class="py-14">
+        <h2 class="section-header text-lg md:text-xl lg:text-2xl font-bold font-monster text-center mb-16 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center w-full before:h-px before:bg-slate-200 before:flex-1 after:h-px after:bg-slate-200 after:flex-1 before:mr-4 after:ml-4">
+          EDUCATION & CREDENTIALS
+        </h2>
+
+        <div id="education-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Education Column -->
+          <div class="space-y-6">
+            <h3 class="text-base md:text-lg lg:text-xl font-bold font-monster text-slate-800 mb-4 flex items-center">
+              <i class="fa-solid fa-graduation-cap text-purple-600 mr-2"></i>Education
+            </h3>
+            
+            <!-- Edu Card 1 -->
+            <div class="education-card p-5 shadow-sm border-l-4 border-l-purple-500 flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 text-base border border-purple-100/30 flex-shrink-0">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="flex-grow">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1.5">
+                  <h4 class="font-bold text-slate-800 text-xs md:text-sm">B.Tech – CSE (AI & ML)</h4>
+                  <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-100 w-fit">2025 – Present</span>
+                </div>
+                <p class="text-slate-600 text-[11px] md:text-xs font-medium">JNTUK, Kakinada</p>
+                <p class="text-indigo-600 text-[11px] md:text-xs font-semibold mt-1.5 font-mono">CGPA: 9.175</p>
+              </div>
+            </div>
+
+            <!-- Edu Card 2 -->
+            <div class="education-card p-5 shadow-sm border-l-4 border-l-purple-500 flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 text-base border border-purple-100/30 flex-shrink-0">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="flex-grow">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1.5">
+                  <h4 class="font-bold text-slate-800 text-xs md:text-sm">Diploma in Computer Engineering</h4>
+                  <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-100 w-fit">2021 – 2024</span>
+                </div>
+                <p class="text-slate-600 text-[11px] md:text-xs font-medium">Andhra Polytechnic, Kakinada</p>
+                <p class="text-indigo-600 text-[11px] md:text-xs font-semibold mt-1.5 font-mono">Percentage: 88%</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications Column -->
+          <div class="space-y-6">
+            <h3 class="text-base md:text-lg lg:text-xl font-bold font-monster text-slate-800 mb-4 flex items-center">
+              <i class="fa-solid fa-award text-purple-600 mr-2"></i>Certifications
+            </h3>
+
+            <!-- Certs Card -->
+            <div class="education-card p-5 shadow-sm border-l-4 border-l-pink-500 flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center text-pink-600 text-base border border-pink-100/30 flex-shrink-0">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="flex-grow space-y-3">
+                
+                <!-- Cert 1 -->
+                <div class="flex items-start">
+                  <div class="text-pink-500 mt-0.5 mr-2 text-xs"><i class="fa-solid fa-circle-check"></i></div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 text-xs md:text-sm">Software Developer Certification</h4>
+                    <p class="text-slate-500 text-[10px] md:text-[11px]">ThoughtWorks Technologies</p>
+                  </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="flex items-start">
+                  <div class="text-pink-500 mt-0.5 mr-2 text-xs"><i class="fa-solid fa-circle-check"></i></div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 text-xs md:text-sm">MERN Stack Developer Certification</h4>
+                    <p class="text-slate-500 text-[10px] md:text-[11px]">Tatvam AI Labs</p>
+                  </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="flex items-start">
+                  <div class="text-pink-500 mt-0.5 mr-2 text-xs"><i class="fa-solid fa-circle-check"></i></div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 text-xs md:text-sm">Frontend Developer Certification</h4>
+                    <p class="text-slate-500 text-[10px] md:text-[11px]">Zonup</p>
+                  </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="flex items-start">
+                  <div class="text-pink-500 mt-0.5 mr-2 text-xs"><i class="fa-solid fa-circle-check"></i></div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 text-xs md:text-sm">PostgreSQL Certification</h4>
+                    <p class="text-slate-500 text-[10px] md:text-[11px]">Udemy</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer id="contact" class="pt-14 pb-6 flex flex-col items-center">
+        <h2 class="section-header text-2xl lg:text-3xl font-bold font-monster text-center mb-6 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 flex items-center w-full before:h-px before:bg-slate-200 before:flex-1 after:h-px after:bg-slate-200 after:flex-1 before:mr-4 after:ml-4">
+          GET IN TOUCH
+        </h2>
+        
+        <h3 class="text-slate-500 text-xs lg:text-sm font-light text-center mb-4">
+          Got a project idea, job opening, or just want to chat?
+        </h3>
+
+        <!-- Contact Grid -->
+        <div id="contact-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 w-full max-w-5xl">
+          
+          <!-- Email Card -->
+          <a href="mailto:bagudivyaramsaran@gmail.com" target="_blank" class="contact-card group hover-glow-indigo p-5 md:p-6 flex flex-row items-start gap-4 cursor-pointer h-full border border-slate-200/50 shadow-sm rounded-2xl transition-all duration-300 animate-none">
+            <div class="w-12 h-12 rounded-xl bg-indigo-50/80 flex items-center justify-center text-indigo-600 text-lg border border-indigo-500/20 shadow-inner group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="flex flex-col text-left">
+              <h4 class="text-slate-800 text-sm font-bold tracking-wide">Email Address</h4>
+              <p class="text-slate-500 text-[11px] md:text-xs mt-0.5 leading-relaxed">Drop a mail, I will write back soon</p>
+              <span class="text-indigo-600 text-xs font-semibold mt-2 border-b border-transparent group-hover:border-indigo-600/50 transition-all duration-300 w-fit truncate max-w-[160px] md:max-w-none">bagudivyaramsaran@gmail.com</span>
+            </div>
+          </a>
+
+          <!-- LinkedIn Card -->
+          <a href="https://www.linkedin.com/in/bagu-ram-saran-24393a260" target="_blank" class="contact-card group hover-glow-purple p-5 md:p-6 flex flex-row items-start gap-4 cursor-pointer h-full border border-slate-200/50 shadow-sm rounded-2xl transition-all duration-300 animate-none">
+            <div class="w-12 h-12 rounded-xl bg-purple-50/80 flex items-center justify-center text-purple-600 text-lg border border-purple-500/20 shadow-inner group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <div class="flex flex-col text-left">
+              <h4 class="text-slate-800 text-sm font-bold tracking-wide">LinkedIn</h4>
+              <p class="text-slate-500 text-[11px] md:text-xs mt-0.5 leading-relaxed">Let's connect professionally</p>
+              <span class="text-purple-600 text-xs font-semibold mt-2 border-b border-transparent group-hover:border-purple-600/50 transition-all duration-300 w-fit">Connect Profile</span>
+            </div>
+          </a>
+
+          <!-- GitHub Card -->
+          <a href="https://github.com/divyaramsaran" target="_blank" class="contact-card group hover-glow-pink p-5 md:p-6 flex flex-row items-start gap-4 cursor-pointer h-full border border-slate-200/50 shadow-sm rounded-2xl transition-all duration-300 animate-none">
+            <div class="w-12 h-12 rounded-xl bg-pink-50/80 flex items-center justify-center text-pink-600 text-lg border border-pink-500/20 shadow-inner group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <div class="flex flex-col text-left">
+              <h4 class="text-slate-800 text-sm font-bold tracking-wide">GitHub</h4>
+              <p class="text-slate-500 text-[11px] md:text-xs mt-0.5 leading-relaxed">View my code repositories</p>
+              <span class="text-pink-600 text-xs font-semibold mt-2 border-b border-transparent group-hover:border-pink-600/50 transition-all duration-300 w-fit">Open Profile</span>
+            </div>
+          </a>
+
         </div>
 
-        <div aria-hidden class="group">
-          <div class="card"><img src="./media/html-5.png" alt="" /></div>
-          <div class="card"><img src="./media/css-3.png" alt="" /></div>
-          <div class="card"><img src="./media/js.png" alt="" /></div>
-          <div class="card" style="margin-top: 10px">
-            <img src="./media/Tailwind CSS Icon.png" alt="" />
+        <div class="mt-8 w-full flex flex-col items-center">
+          <!-- Decorative Divider -->
+          <div class="relative w-full flex items-center justify-center mb-6">
+            <div class="absolute inset-0 flex items-center"><div class="w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200/80 to-transparent"></div></div>
+            <div class="relative px-4 bg-transparent">
+              <span class="inline-block px-3 py-1 glass rounded-full border border-purple-500/15 text-[9px] font-mono tracking-widest text-purple-600 bg-white/90 shadow-sm">
+                <i class="fa-solid fa-code text-purple-500 mr-1.5 animate-pulse"></i>MADE WITH PASSION
+              </span>
+            </div>
           </div>
-          <div class="card" style="margin-top: 10px">
-            <img src="./media/postgress.jpg" alt="" />
-          </div>
-          <div class="card"><img src="./media/Deno JS.png" alt="" /></div>
-          <div class="card"><img src="./media/java.png" alt="" /></div>
-          <div class="card"><img src="./media/programing.png" alt="" /></div>
-          <div class="card"><img src="./media/python.png" alt="" /></div>
-          <div class="card"><img src="./media/react.png" alt="" /></div>
+          <p class="text-[9px] text-slate-500 font-mono uppercase tracking-widest">
+            &copy; 2026 Bagu Divya Ram Saran. All Rights Reserved.
+          </p>
         </div>
+      </footer>
+      </main>
 
-        <div aria-hidden class="group">
-          <div class="card"><img src="./media/media/html-5.png" alt="" /></div>
-          <div class="card"><img src="./media/media/css-3.png" alt="" /></div>
-          <div class="card"><img src="./media/media/js.png" alt="" /></div>
-          <div class="card" style="margin-top: 10px">
-            <img src="./media/media/Tailwind CSS Icon.png" alt="" />
-          </div>
-          <div class="card" style="margin-top: 10px">
-            <img src="./media/media/postgress.jpg" alt="" />
-          </div>
-          <div class="card"><img src="./media/media/Deno JS.png" alt="" /></div>
-          <div class="card"><img src="./media/media/java.png" alt="" /></div>
-          <div class="card">
-            <img src="./media/media/programing.png" alt="" />
-          </div>
-          <div class="card"><img src="./media/media/python.png" alt="" /></div>
-          <div class="card"><img src="./media/media/react.png" alt="" /></div>
-        </div>
-      </div>
-    </div>
+    <!-- JS Core Libraries (Three.js and GSAP via CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <div id="projects">
-      <h2
-        class="text-3xl text-stone m-2 flex items-center before:h-px before:bg-stone-800 before:flex-1 after:h-px after:bg-stone-800 after:flex-1"
-      >
-        Featured Works
-      </h2>
-    </div>
-
-    <div class="sm:grid sm:grid-cols-2">
-      <div
-        style="background-image: url(./media/bookCricket.png)"
-        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
-      >
-        <div
-          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
-        >
-          <h1 class="text-3xsl p-3 mt-2 sm:text-2xl sm:mt-0">Book Cricket</h1>
-          <h3 class="view p-3 mb-2">
-            Book Cricket is a fun, console-based JavaScript game where two
-            players take turns batting in a simulated cricket match. A coin toss
-            decides who bats first, with randomized outcomes for runs, wides,
-            and dismissals. It tracks scores live and supports replays for
-            endless play.
-          </h3>
-        </div>
-      </div>
-
-      <div
-        style="background-image: url(./media/registerWeb.png)"
-        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
-      >
-        <div
-          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
-        >
-          <h1 class="text-3xl p-3 mt-2 sm:text-2xl sm:mt-0">
-            Event Registration Portal
-          </h1>
-
-          <h3 class="p-3 mb-2 view">
-            Event Registration Portal is a web platform for admins to manage
-            quizzes, competitions, and cultural events. It collects participant
-            data through forms, tracks registrations in real-time, and stores
-            details for better event planning.
-          </h3>
-        </div>
-      </div>
-
-      <div
-        style="background-image: url(./media/taskReminder.png)"
-        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
-      >
-        <div
-          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
-        >
-          <h1 class="text-3xl p-3 mt-2 sm:text-2xl sm:mt-0">
-            Task Reminder Application
-          </h1>
-
-          <h3 class="p-3 mb-2 view">
-            Task Reminder Application is a JavaScript console app for managing
-            normal (one-time) and recurring tasks with real-time status
-            tracking, countdown timers, and interactive menu controls. Users can
-            create, view, cancel, or complete tasks.
-          </h3>
-        </div>
-      </div>
-
-      <div
-        style="background-image: url(./media/bingo.jpg)"
-        class="h-90 bg-cover bg-center bg-no-repeat m-2 rounded-lg text-white mt-5 sm:h-70 sm:text-sm sm:mb-0.5"
-      >
-        <div
-          class="bg-stone-800/80 h-full rounded-lg flex flex-col justify-between"
-        >
-          <h1 class="text-3xl p-3 mt-2 sm:text-2xl sm:mt-0">BINGO</h1>
-
-          <h3 class="p-3 mb-2 view">
-            Bingo Game is a two-player JavaScript console game featuring 5x5
-            randomly generated grids displayed side-by-side. Players mark called
-            numbers with 🌟 stars in real-time, racing to complete all 25
-            numbers first to win.
-          </h3>
-        </div>
-      </div>
-    </div>
-
-    <footer id="contact" class="bg-stone-800 w-full h-170 mt-5 sm:h-90">
-      <h1 class="text-2xl text-white p-5 text-center">
-        Got a project idea or job opening?
-      </h1>
-
-      <div class="sm:flex sm:mt-5">
-        <section class="bg-white m-5 rounded-lg p-5 flex-1">
-          <img src="./media/email.png" alt="" class="size-10" />
-          <h2 class="text-stone-800 mt-1">Email Address</h2>
-          <h2 class="text-stone-800 text-sm mt-1">
-            Just Drop A Mail I Will Get Back Soon
-          </h2>
-          <a
-            href="mailto:bagudivyaramsaran@gmail.com"
-            target="_blank"
-            class="text-blue-400 text-sm inline-block mt-1"
-            >bagudivyaramsaran@gmail.com</a
-          >
-        </section>
-
-        <section class="bg-white m-5 rounded-lg p-5 flex-1">
-          <img src="./media/linkedin.png" alt="" class="size-10" />
-          <h2 class="text-stone-800 mt-1">Linked In</h2>
-          <h2 class="text-stone-800 text-sm mt-1">Connect with me</h2>
-          <a
-            href="https://www.linkedin.com/in/bagu-ram-saran-24393a260"
-            target="_blank"
-            class="text-blue-400 text-sm inline-block mt-1"
-            >Linked In Profile</a
-          >
-        </section>
-
-        <section class="bg-white m-5 rounded-lg p-5 flex-1">
-          <img src="./media/github.png" alt="" class="size-10" />
-          <h2 class="text-stone-800 mt-1">Git Hub</h2>
-          <h2 class="text-stone-800 text-sm mt-1">View My Work On Git Hub</h2>
-          <a
-            href="https://github.com/divyaramsaran"
-            target="_blank"
-            class="text-blue-400 text-sm inline-block mt-1"
-            >Git Hub Profile</a
-          >
-        </section>
-      </div>
-    </footer>
-
-    <script>
-      const navBar = document.querySelector("#nav");
-      const dropDown = document.querySelector("#dropdown");
-      navBar.addEventListener("click", () => {
-        dropDown.classList.toggle("opacity-100");
-        dropDown.classList.toggle("visible");
-        dropDown.classList.toggle("translate-y-0");
-      });
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const track = document.querySelector(".track");
-        const group = document.querySelector(".group");
-
-        if (track && group) {
-          const setScroll = () => {
-            const groupWidth = group.getBoundingClientRect().width;
-            track.style.setProperty("--scroll-distance", `${groupWidth}px`);
-            track.style.setProperty("--scroll-nudge", `0.5px`);
-            const speed = 20;
-            const duration = Math.max(6, groupWidth / speed);
-            track.style.setProperty("--scroll-duration", `${duration}s`);
-          };
-          setScroll();
-          window.addEventListener("resize", setScroll);
-        }
-
-        const views = document.querySelectorAll(".view");
-        if (views.length > 0) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                const el = entry.target;
-                const delay = parseFloat(el.dataset.delay) || 0.6;
-
-                if (entry.isIntersecting) {
-                  el.style.transitionDelay = `${delay}s`;
-                  el.classList.add("in-view");
-
-                  if (el.dataset.once === "true") {
-                    io.unobserve(el);
-                  }
-                } else {
-                  el.classList.remove("in-view");
-                  el.style.transitionDelay = "";
-                }
-              });
-            },
-            { threshold: 0.2, rootMargin: "0px 0px -10%" }
-          );
-
-          views.forEach((v) => io.observe(v));
-        }
-      });
-    </script>
+    <!-- Custom Script Modules -->
+    <script src="js/three-bg.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
-
