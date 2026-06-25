@@ -67,21 +67,20 @@
       .track {
         display: flex;
         width: max-content;
-        --scroll-distance: 50%;
-        --scroll-duration: 20s;
-        --scroll-nudge: 0px;
+        flex-shrink: 0; /* Prevents squishing inside parent flex container */
+        --scroll-duration: 25s; /* Slightly slower for a more professional, premium glide */
         animation: scroll var(--scroll-duration) linear infinite;
         will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
       }
 
       @keyframes scroll {
         from {
-          transform: translateX(0);
+          transform: translate3d(0, 0, 0);
         }
         to {
-          transform: translateX(
-            calc(-1 * var(--scroll-distance) - var(--scroll-nudge))
-          );
+          transform: translate3d(-50%, 0, 0);
         }
       }
 
@@ -100,6 +99,20 @@
     </style>
   </head>
   <body class="font-poppin bg-transparent text-slate-800 overflow-hidden selection:bg-purple-200 selection:text-purple-900">
+    
+    <!-- Glassmorphism Floating Background Blobs -->
+    <div class="bg-blobs-container">
+      <div class="bg-blob blob-purple"></div>
+      <div class="bg-blob blob-indigo"></div>
+      <div class="bg-blob blob-pink"></div>
+    </div>
+
+    <!-- Custom Cursor Follower Elements -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Click Sparks Canvas Overlay -->
+    <canvas id="spark-canvas" style="position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
     
     <!-- 1. Splash Screen Loader -->
     <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#eef2ff] via-[#fdf4ff] to-[#e0f2fe] transition-all duration-800">
@@ -356,7 +369,7 @@
                   <h4 class="text-purple-600 font-medium text-[11px] md:text-xs lg:text-sm">Tatvam AI Labs</h4>
                 </div>
                 <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2.5 py-0.8 rounded-full border border-purple-100 mt-1.5 sm:mt-0 inline-block w-fit">
-                  05/2025 – 06/2025
+                  05/2026 – 06/2026
                 </span>
               </div>
               <ul class="list-disc list-inside text-slate-600 text-xs lg:text-[13px] space-y-1.5 mt-2">
@@ -413,6 +426,9 @@
               <div class="tech-card bg-slate-50/70 border border-slate-200/40 hover:bg-slate-100/70 hover:border-slate-300/40 glow-indigo"><img src="./media/programing.png" alt="C/Programming" class="max-h-full" /></div>
               <div class="tech-card bg-sky-50/70 border border-sky-200/40 hover:bg-sky-100/70 hover:border-sky-300/40 glow-purple"><img src="./media/python.png" alt="Python" class="max-h-full" /></div>
               <div class="tech-card bg-cyan-50/70 border border-cyan-200/40 hover:bg-cyan-100/70 hover:border-cyan-300/40 glow-indigo"><img src="./media/react.png" alt="React" class="max-h-full" /></div>
+              <div class="tech-card bg-emerald-50/70 border border-emerald-200/40 hover:bg-emerald-100/70 hover:border-emerald-300/40 glow-pink"><img src="./media/nodejs.png" alt="Node.js" class="max-h-full" /></div>
+              <div class="tech-card bg-zinc-50/70 border border-zinc-200/40 hover:bg-zinc-100/70 hover:border-zinc-300/40 glow-indigo"><img src="./media/express.svg" alt="Express.js" class="max-h-full" /></div>
+              <div class="tech-card bg-indigo-50/70 border border-indigo-200/40 hover:bg-indigo-100/70 hover:border-indigo-300/40 glow-purple"><img src="./media/php.svg" alt="PHP" class="max-h-full" /></div>
             </div>
 
             <!-- Group 2 (Duplicate for loop) -->
@@ -427,6 +443,9 @@
               <div class="tech-card bg-slate-50/70 border border-slate-200/40 hover:bg-slate-100/70 hover:border-slate-300/40 glow-indigo"><img src="./media/programing.png" alt="C/Programming" class="max-h-full" /></div>
               <div class="tech-card bg-sky-50/70 border border-sky-200/40 hover:bg-sky-100/70 hover:border-sky-300/40 glow-purple"><img src="./media/python.png" alt="Python" class="max-h-full" /></div>
               <div class="tech-card bg-cyan-50/70 border border-cyan-200/40 hover:bg-cyan-100/70 hover:border-cyan-300/40 glow-indigo"><img src="./media/react.png" alt="React" class="max-h-full" /></div>
+              <div class="tech-card bg-emerald-50/70 border border-emerald-200/40 hover:bg-emerald-100/70 hover:border-emerald-300/40 glow-pink"><img src="./media/nodejs.png" alt="Node.js" class="max-h-full" /></div>
+              <div class="tech-card bg-zinc-50/70 border border-zinc-200/40 hover:bg-zinc-100/70 hover:border-zinc-300/40 glow-indigo"><img src="./media/express.svg" alt="Express.js" class="max-h-full" /></div>
+              <div class="tech-card bg-indigo-50/70 border border-indigo-200/40 hover:bg-indigo-100/70 hover:border-indigo-300/40 glow-purple"><img src="./media/php.svg" alt="PHP" class="max-h-full" /></div>
             </div>
             
           </div>
@@ -727,6 +746,7 @@
 
     <!-- Custom Script Modules -->
     <script src="js/three-bg.js"></script>
+    <script src="js/custom-cursor.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
   </body>
